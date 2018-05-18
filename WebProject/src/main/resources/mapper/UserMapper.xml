@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jhkim.project.mapper.UserMapper">
+
+	<select id="selectUserData" parameterType="Map" resultType="com.jhkim.project.dto.UserDTO" >
+		SELECT *
+		FROM USER_DATA
+		WHERE USER_ID = #{userId}
+		AND USER_PW = #{userPw}
+	</select>
+	
+	<insert id="insertUserData" parameterType="Map" >
+		INSERT INTO USER_DATA(
+			USER_ID
+			,SEQ_NO
+			,USER_PW
+			,USER_HP_NO
+			,USER_EMAIL
+			,CREATE_DATE
+			,UPDATE_DATE
+			,ACTIVE_FLAG
+		)
+		VALUES
+		(
+			#{userId}
+			,#{seqNo}
+			,#{userPw}
+			,#{userHpNo}
+			,#{userEmail}
+			,SYSDATE
+			,SYSDATE
+			,1			
+		)
+	</insert>
+
+</mapper>
