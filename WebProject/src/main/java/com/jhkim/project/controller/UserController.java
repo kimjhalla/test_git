@@ -1,12 +1,10 @@
 package com.jhkim.project.controller;
 
-import java.util.HashMap;
 import java.util.Map;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
-import org.apache.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,35 +21,27 @@ public class UserController {
 	@Resource(name="userMapper")
 	UserMapper userMapper;
 	
-	@RequestMapping(value="/Login", method=RequestMethod.POST)
+	@RequestMapping(value="/login", method=RequestMethod.POST)
 	@ResponseBody
 	public BasicResult Login(@RequestParam Map<String,String> param,HttpServletRequest request, Model model){
 		BasicResult result = new BasicResult();
-		try{
+		try{		
+			UserDTO dto = userMapper.selectUserData(param);
 			
-		
-		System.out.println(param.get("userId"));
-		System.out.println(param.get("userPw"));
-		
-		UserDTO dto = userMapper.selectUserData(param);
-		System.out.println("after");
-		if(dto == null){
-			System.out.println("null");
-			result.setResultCode("EF001");
-			result.setResultMsg("로그인 실패");
-		}
+			if(dto == null){				
+				result.setResultCode("EF001");
+				result.setResultMsg("로그인 실패");
+			}
 		}
 		catch(Exception e){
 			System.out.println(e.getMessage());
 		}
-		
-		System.out.println("result");
 		return result;
 	}
 	
-	@RequestMapping(value="/Join", method=RequestMethod.POST)
+	@RequestMapping(value="/join", method=RequestMethod.GET)
 	public String Join(){
 		
-		return "";
+		return "join";
 	}
 }

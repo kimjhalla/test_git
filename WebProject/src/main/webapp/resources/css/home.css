@@ -1,4 +1,11 @@
-@CHARSET "EUC-KR";
+@CHARSET "UTF-8";
+
+/*
+ 
+# : 아이디
+. : 클래스
+ 
+*/
 
 #div_root{
 	margin:auto;	
@@ -11,6 +18,10 @@
 
 #div_login{
 	width:30%;
-	float:right;
-	
+	float:right;	
+}
+
+.center{
+	width:50%;
+	margin:auto;
 }
