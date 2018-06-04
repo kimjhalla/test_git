@@ -1,10 +1,8 @@
 @CHARSET "UTF-8";
 
-/*
- 
+/* 
 # : 아이디
-. : 클래스
- 
+. : 클래스 
 */
 
 #div_root{
@@ -19,6 +17,14 @@
 #div_login{
 	width:30%;
 	float:right;	
+}
+
+#div_logo{
+	float:left;
+}
+
+#div_search{
+	
 }
 
 .center{
