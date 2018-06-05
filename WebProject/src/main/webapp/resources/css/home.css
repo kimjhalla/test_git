@@ -24,10 +24,39 @@
 }
 
 #div_search{
-	
+	margin: -1px auto 1pc;
+    height: 25px;
+    width: 64pc;
+    position: relative;	
 }
 
-.center{
-	width:50%;
-	margin:auto;
+.input_city{
+	width:16pc;
+	float:left;
 }
+
+.input_cal{
+	width:16pc;
+	float:left;
+}
+
+.search_context{
+	width:100%;
+	float:left;
+	height:50px;
+}
+
+.search_city{
+	width:64pc;
+	position: relative;	
+}
+
+
+input{
+	height:23px;
+	margin-top:3px;
+}
+
+.center{width:50%;	margin:auto;}
+.search_type{list-style:none;}
+.search_type li{float:left;margin-right:50px;content:""}
