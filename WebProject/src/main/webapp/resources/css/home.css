@@ -59,4 +59,4 @@ input{
 
 .center{width:50%;	margin:auto;}
 .search_type{list-style:none;}
-.search_type li{float:left;margin-right:50px;content:""}
+.search_type li{float:left;margin-right:50px;content:"";border-color:red;cursor:pointer;}
