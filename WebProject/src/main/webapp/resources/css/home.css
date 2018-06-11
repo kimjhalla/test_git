@@ -1,9 +1,84 @@
 @CHARSET "UTF-8";
 
-/* 
+/*
+
+blank : 태그 
 # : 아이디
-. : 클래스 
+. : 클래스
+ 
 */
+
+
+/* 태그 CSS 정의 */
+input{
+	height:23px;
+	margin-top:3px;
+	cursor:pointer;
+}
+
+li{
+	list-style:none;
+}
+
+
+/* 클래스 CSS 정의 */
+.input_city{
+	width:16pc;
+	float:left;
+}
+
+.input_cal{
+	width:16pc;
+	float:left;
+}
+
+.search_context{
+	width:100%;
+	float:left;
+	height:50px;
+}
+
+.search_city{
+	width:64pc;
+	position: relative;	
+}
+
+.travler_person ul .number{
+	margin-left:10px;
+	margin-right:10px;
+}
+
+.travler_person ul li{
+	margin-top:20px;
+}
+
+.travler_person ul .text{
+	float:left;	
+	width:100px;	
+}
+
+.minus{
+	display:inline-block;
+	width:16px;
+	height:16px;	
+	background:url(../img/minus.png);	
+	background-size: 16px 16px;
+	background-repeat:no-repeat;	
+}
+
+.plus{
+	display:inline-block;
+	width:16px;
+	height:16px;	
+	background:url(../img/plus.png);	
+	background-size: 16px 16px;
+	background-repeat:no-repeat;	
+}
+
+.center{width:50%;	margin:auto;}
+.search_type li{float:left;margin-right:50px;content:"";border-color:red;cursor:pointer;}
+
+/* ID CSS 정의 */
 
 #div_root{
 	margin:auto;	
@@ -29,34 +104,3 @@
     width: 64pc;
     position: relative;	
 }
-
-.input_city{
-	width:16pc;
-	float:left;
-}
-
-.input_cal{
-	width:16pc;
-	float:left;
-}
-
-.search_context{
-	width:100%;
-	float:left;
-	height:50px;
-}
-
-.search_city{
-	width:64pc;
-	position: relative;	
-}
-
-
-input{
-	height:23px;
-	margin-top:3px;
-}
-
-.center{width:50%;	margin:auto;}
-.search_type{list-style:none;}
-.search_type li{float:left;margin-right:50px;content:"";border-color:red;cursor:pointer;}

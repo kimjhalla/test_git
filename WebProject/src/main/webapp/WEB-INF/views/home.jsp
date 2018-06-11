@@ -4,15 +4,16 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
+	<fmt:formatDate var="version" value="${today}" pattern="yyyyMMDD"/>
 	<script type="text/javascript" src="<c:url value="/resources/js/jquery-3.3.1.js/"/>"></script>
-	<script type="text/javascript" src="<c:url value="/resources/js/home.js/"/>"></script>	
+	<script type="text/javascript" src="<c:url value="/resources/js/home.js/"/>?version=${version}"></script>	
 	<link href="<c:url value="/resources/css/home.css"/>" rel="stylesheet" ></link>	
 	<!-- DataDropper -->
 	<script type="text/javascript" src="<c:url value="/resources/js/datedropper.js/"/>"></script>
 	<link href="<c:url value="/resources/css/datedropper.css"/>" rel="stylesheet" ></link>	
 	
 	<link rel="shortcut icon" type="image/x-icon" href="http://www.example.com/favicon.ico" />	
-	<title>할라.피.뇨(Halla.P.No)</title>
+	<title></title>
 </head>
 <body>
 <div id="div_root">
@@ -39,11 +40,11 @@
 			<div class="search_context" id="search_city">
 				<div class="input_city departure">
 					<img alt="departure_city_logo" src="<c:url value="/resources/img/start_city_logo.png"/> " style="width: auto;height: 24px;">
-					<input type="text" name="departure_city_loc" id="departure_city_loc">					
+					<input class="city_loc" type="text" placeholder="국가, 도시" name="departure_city_loc" >					
 				</div>
 				<div class="input_city destination">
 					<img alt="destination_city_logo" src="<c:url value="/resources/img/end_city_logo.png"/> " style="width: auto;height: 24px;">
-					<input type="text" name="destination_city_loc" id="destination_city_loc">
+					<input class="city_loc" type="text" placeholder="국가, 도시" name="destination_city_loc" >
 				</div>
 			</div>
 			<div class="search_context" id="search_date">
@@ -58,6 +59,17 @@
 				<div class="input_traveler">
 					<img alt="input_traveler_logo" src="<c:url value="/resources/img/input_traveler_logo.png"/> " style="width: 30px;height: 24px;">
 					<input type="text">
+					<div class="travler_list" style="">
+						<div class="travler_person"> 
+							<ul>
+								<li><span class="text">성인</span><div class="count"><a class="button minus"></a><span class="number">1</span><a class="button plus"></a></div></li>
+								<li><span class="text">유/소아</span><div class="count"><a class="button minus"></a><span class="number">1</span><a class="button plus"></a></div></li>
+							</ul>
+						</div>
+						<div class="travler_grade">
+							
+						</div>
+					</div>
 				</div>
 			</div>				
 		</div>
@@ -69,11 +81,11 @@
 			<div class="search_context" id="search_city">				
 				<div class="input_city departure">
 					<img alt="departure_city_logo" src="<c:url value="/resources/img/start_city_logo.png"/> " style="width: auto;height: 24px;">
-					<input type="text" name="departure_city_loc" id="departure_city_loc_1">					
+					<input class="city_loc" type="text" placeholder="국가, 도시" name="departure_city_loc" >					
 				</div>
 				<div class="input_city destination">
 					<img alt="destination_city_logo" src="<c:url value="/resources/img/end_city_logo.png"/> " style="width: auto;height: 24px;">
-					<input type="text" name="destination_city_loc" id="destination_city_loc_1">
+					<input class="city_loc" type="text" placeholder="국가, 도시" name="destination_city_loc" >
 				</div>
 				<div class="input_cal start">
 					<img alt="input_cal_logo" src="<c:url value="/resources/img/input_cal_logo.png"/> " style="width: 30px;height: 24px;">
@@ -83,11 +95,11 @@
 			<div class="search_context" id="search_city">				
 				<div class="input_city departure">
 					<img alt="departure_city_logo" src="<c:url value="/resources/img/start_city_logo.png"/> " style="width: auto;height: 24px;">
-					<input type="text" name="departure_city_loc" id="departure_city_loc_2">					
+					<input class="city_loc" type="text" placeholder="국가, 도시" name="departure_city_loc" >					
 				</div>
 				<div class="input_city destination">
 					<img alt="destination_city_logo" src="<c:url value="/resources/img/end_city_logo.png"/> " style="width: auto;height: 24px;">
-					<input type="text" name="destination_city_loc" id="destination_city_loc_2">
+					<input class="city_loc" type="text" placeholder="국가, 도시" name="destination_city_loc" >
 				</div>
 				<div class="input_cal start">
 					<img alt="input_cal_logo" src="<c:url value="/resources/img/input_cal_logo.png"/> " style="width: 30px;height: 24px;">

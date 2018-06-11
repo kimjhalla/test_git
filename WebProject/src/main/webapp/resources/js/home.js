@@ -1,7 +1,13 @@
 $(document).ready(function (){
 	
+	$(".input_traveler input").click(function(){		
+		$(this).parent("div").find(".travler_list").show();		
+	})
 	
-	// 날짜 검색 UI
+	
+	//---------------------------
+	// 날짜 검색 UI(DateDropper)
+	//---------------------------
 	$(".input_cal").find("input").each(function(){		
 		$(this).attr({
 			"data-lang" : "ko",
@@ -13,7 +19,9 @@ $(document).ready(function (){
 		$(this).dateDropper();
 	});
 	
+	//---------------------------
 	// 검색 유형(왕복, 편도, 다구간)
+	//---------------------------
 	$(".search_type li").click(function(){
 		$(this).parent("ul").find("a").removeClass("active");	/* active 클래스 삭제 */
 		$(this).parent("ul").find("a").css("color","black");	/* 글자 색 검은색 설정 */
@@ -25,7 +33,9 @@ $(document).ready(function (){
 		
 	})
 	
+	//---------------------------	
 	// 검색 유형 클릭시 이벤트 발생
+	//---------------------------	
 	function clickSearchType(a){
 		var lastInput = $("#search_date .end").find("input");
 		
@@ -50,7 +60,9 @@ $(document).ready(function (){
 		}
 	}
 	
+	//---------------------------
 	//ajax 를 통한 로그인 프로세스 진행
+	//---------------------------	
 	function login() {
 		jQuery.ajax({
 			type : "POST",
@@ -69,7 +81,9 @@ $(document).ready(function (){
 			}
 		})
 	}
-	//ajax 실행 결과 후처리
+	//---------------------------
+	// ajax 실행 결과 후처리
+	//---------------------------
 	function callbacklogin(obj) {
 		if (obj.resultCode != null || length(obj.resultCode) > 0) {
 			alert(obj.resultCode);
@@ -79,6 +93,9 @@ $(document).ready(function (){
 		}
 	}
 	
+	//---------------------------
+	// 가입 버튼 클릭시 처리
+	//---------------------------
 	function join(){
 		
 	}
