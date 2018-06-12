@@ -16,10 +16,13 @@ input{
 	cursor:pointer;
 }
 
+a{
+	cursor:pointer;
+}
+
 li{
 	list-style:none;
 }
-
 
 /* 클래스 CSS 정의 */
 .input_city{
@@ -30,6 +33,11 @@ li{
 .input_cal{
 	width:16pc;
 	float:left;
+}
+
+.input_traveler{
+	float:left;
+	width:400px;	
 }
 
 .search_context{
@@ -43,19 +51,43 @@ li{
 	position: relative;	
 }
 
-.travler_person ul .number{
+.traveler_list{
+	position:absolute;
+	width:400px;
+	margin-left:35px;	
+	border: 1px solid #bcbcbc;
+	display:none;
+}
+.traveler_list .traveler_person{
+	float:left;
+	width:249px;
+	border-right: 1px solid #bcbcbc;	
+}
+
+.traveler_person ul .number{
 	margin-left:10px;
 	margin-right:10px;
 }
 
-.travler_person ul li{
+.traveler_person ul li{
 	margin-top:20px;
 }
 
-.travler_person ul .text{
+.traveler_person ul .text{
 	float:left;	
 	width:100px;	
 }
+
+.traveler_list .traveler_grade{
+	float:left;
+	width:150px;
+}
+
+.traveler_list .traveler_grade ul li{
+	margin-top:20px;
+}
+
+
 
 .minus{
 	display:inline-block;
@@ -103,4 +135,8 @@ li{
     height: 25px;
     width: 64pc;
     position: relative;	
+}
+
+#search_multi_info{
+	display:none;
 }

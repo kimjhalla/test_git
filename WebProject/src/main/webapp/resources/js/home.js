@@ -1,9 +1,104 @@
 $(document).ready(function (){
 	
-	$(".input_traveler input").click(function(){		
-		$(this).parent("div").find(".travler_list").show();		
+	//---------------------------
+	// 다른 모달 활성화시 기존 활성화 모달은 비활성화 이벤트
+	// datadropper은 자기 스크립트에 설정되어있음
+	//---------------------------
+	$(this).click(function(e) {
+		var traveler_list = $(".traveler_list");		
+		if(traveler_list.parent("div").has(e.target).length === 0 && traveler_list.has(e.target).length === 0) {
+			traveler_list.hide();				
+		}
 	})
 	
+	var TravelerInfo = (function(){
+		var instance;
+
+		function initiate(){
+			return {
+				adultCount : 1, 
+				childrenCount : 0, 
+				grade : 1
+			}
+		}
+		
+		return{
+			getInstance: function(){
+				if(!instance){
+					instance = initiate();
+				}
+				return instance;
+			}
+		}
+	})();
+	
+	var travelerInfo = TravelerInfo.getInstance();
+	
+	//---------------------------
+	// 승객 등급 변경 이벤트 
+	//---------------------------
+	$(".traveler_grade li").click(function(){
+		
+	})
+	
+	//---------------------------
+	// 승객 인원 변경 이벤트 
+	//---------------------------	
+	$(".button").click(function(){
+		var adultCount = 1;
+		var childrenCount = 0;
+		if($(this).hasClass("minus") === true){			
+			if($(this).parent("div").hasClass("adult")){
+				adultCount = Number($(this).parent("div").find("span").text());
+				if(adultCount <= 1){
+					return;
+				}
+				adultCount += -1;
+				$(this).parent("div").find("span").text(adultCount);
+			}else if($(this).parent("div").hasClass("children")){
+				childrenCount = Number($(this).parent("div").find("span").text());
+				if(childrenCount == 0){
+					return;
+				}
+				childrenCount += -1;
+				$(this).parent("div").find("span").text(childrenCount);
+			}
+		} 
+		else if($(this).hasClass("plus") === true){
+			if($(this).parent("div").hasClass("adult")){
+				adultCount = Number($(this).parent("div").find("span").text());
+				if(adultCount >=5 ){
+					return;
+				}
+				adultCount += 1;
+				$(this).parent("div").find("span").text(adultCount);
+			}else if($(this).parent("div").hasClass("children")){
+				childrenCount = Number($(this).parent("div").find("span").text());
+				if(childrenCount >=5 ){
+					return;
+				}
+				childrenCount += 1;
+				$(this).parent("div").find("span").text(childrenCount);
+			}
+		}
+		
+		travelerInfo.adultCount = adultCount;
+		travelerInfo.childrenCount = childrenCount;
+		
+	})
+	
+	function setTravelerInfo(){
+		var str = '성인 : '+travelerInfo.adultCount+' , 유/소아 : '+travelerInfo.childrenCount+' , 등급 : '+travelerInfo.grade;
+		$(".input_traveler").find("input").val(str);
+	}
+	
+	//---------------------------
+	// 승객 정보 입력 화면
+	//---------------------------
+	$(".input_traveler input").click(function(){		
+		$(this).parent("div").find(".traveler_list").show();	
+		
+	})
 	
 	//---------------------------
 	// 날짜 검색 UI(DateDropper)

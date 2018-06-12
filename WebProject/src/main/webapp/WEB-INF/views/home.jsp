@@ -58,22 +58,27 @@
 				</div>
 				<div class="input_traveler">
 					<img alt="input_traveler_logo" src="<c:url value="/resources/img/input_traveler_logo.png"/> " style="width: 30px;height: 24px;">
-					<input type="text">
-					<div class="travler_list" style="">
-						<div class="travler_person"> 
+					<input type="text" readonly value="성인 : 1, 유/소아 : 0">
+					<div class="traveler_list hide" style="">
+						<div class="traveler_person"> 
 							<ul>
-								<li><span class="text">성인</span><div class="count"><a class="button minus"></a><span class="number">1</span><a class="button plus"></a></div></li>
-								<li><span class="text">유/소아</span><div class="count"><a class="button minus"></a><span class="number">1</span><a class="button plus"></a></div></li>
+								<li><span class="text">인원</span></li><br/>
+								<li><span class="text">성인</span><div class="adult count"><a class="button minus"></a><span class="number">1</span><a class="button plus"></a></div></li>
+								<li><span class="text">유/소아</span><div class="children count"><a class="button minus"></a><span class="number">0</span><a class="button plus"></a></div></li>
 							</ul>
 						</div>
-						<div class="travler_grade">
-							
+						<div class="traveler_grade">
+							<ul>
+								<li><span class="text">등급</span></li>
+								<li><span class="text">이코노미</span></li>
+								<li><span class="text">비즈니스</span></li>								
+							</ul>
 						</div>
 					</div>
 				</div>
 			</div>				
 		</div>
-		<div class="search_context" id="search_multi_info" style="display:none;">
+		<div class="search_context" id="search_multi_info">
 			<div class="input_traveler">
 					<img alt="input_traveler_logo" src="<c:url value="/resources/img/input_traveler_logo.png"/> " style="width: 30px;height: 24px;">
 					<input type="text">
