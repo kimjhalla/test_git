@@ -37,8 +37,9 @@ $(document).ready(function (){
 	//---------------------------
 	// 승객 등급 변경 이벤트 
 	//---------------------------
-	$(".traveler_grade li").click(function(){
-		
+	$(".traveler_grade .grade").click(function(){		
+		$(this).parent("ul").find("span").css("border-color","#bcbcbc");
+		$(this).find("span").css("border-color","#ff0000");
 	})
 	
 	//---------------------------
@@ -84,9 +85,13 @@ $(document).ready(function (){
 		
 		travelerInfo.adultCount = adultCount;
 		travelerInfo.childrenCount = childrenCount;
+		setTravelerInfo();
 		
 	})
 	
+	//---------------------------
+	// 승객 정보 input 글자 설정
+	//---------------------------	
 	function setTravelerInfo(){
 		var str = '성인 : '+travelerInfo.adultCount+' , 유/소아 : '+travelerInfo.childrenCount+' , 등급 : '+travelerInfo.grade;
 		$(".input_traveler").find("input").val(str);

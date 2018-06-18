@@ -69,6 +69,10 @@ li{
 	margin-right:10px;
 }
 
+.traveler_list .traveler_person ul .title{
+	height:20px;
+}
+
 .traveler_person ul li{
 	margin-top:20px;
 }
@@ -87,7 +91,16 @@ li{
 	margin-top:20px;
 }
 
+.traveler_list .traveler_grade ul .grade span{
+	border:1px solid #bcbcbc;
+	padding-left:10px;
+	padding-right:10px;
+	cursor:pointer;
+}
 
+.traveler_list .traveler_grade ul .grade #economy{
+	border:1px solid #ff0000;	
+}
 
 .minus{
 	display:inline-block;

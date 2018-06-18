@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-	<fmt:formatDate var="version" value="${today}" pattern="yyyyMMDD"/>
+	<fmt:formatDate var="version" value="${today}" pattern="yyyyMMDDHHmmss"/>
 	<script type="text/javascript" src="<c:url value="/resources/js/jquery-3.3.1.js/"/>"></script>
 	<script type="text/javascript" src="<c:url value="/resources/js/home.js/"/>?version=${version}"></script>	
 	<link href="<c:url value="/resources/css/home.css"/>" rel="stylesheet" ></link>	
@@ -62,16 +62,16 @@
 					<div class="traveler_list hide" style="">
 						<div class="traveler_person"> 
 							<ul>
-								<li><span class="text">인원</span></li><br/>
+								<li class="title"><span class="text">인원</span></li>
 								<li><span class="text">성인</span><div class="adult count"><a class="button minus"></a><span class="number">1</span><a class="button plus"></a></div></li>
 								<li><span class="text">유/소아</span><div class="children count"><a class="button minus"></a><span class="number">0</span><a class="button plus"></a></div></li>
 							</ul>
 						</div>
 						<div class="traveler_grade">
 							<ul>
-								<li><span class="text">등급</span></li>
-								<li><span class="text">이코노미</span></li>
-								<li><span class="text">비즈니스</span></li>								
+								<li class="title"><span class="text">등급</span></li>
+								<li class="grade"><span id="economy">이코노미</span></li>
+								<li class="grade"><span id="bizness">비즈니스</span></li>								
 							</ul>
 						</div>
 					</div>
