@@ -1,5 +1,34 @@
 $(document).ready(function (){
 	
+	$(".city_loc_list").click(function(){
+		var tag = "";
+		return tag;
+	})
+	
+	
+	//---------------------------
+	// 승객 수, 등급 입력 화면 Init
+	//---------------------------
+	$(".traveler_list").html(function(){
+		var tag = 
+		"<div class='traveler_person'>" 
+	+		"<ul>"
+	+			"<li class='title'><span class='text'>인원</span></li>"
+	+			"<li><span class='text'>성인</span><div class='adult count'><a class='button minus'></a><span class='number'>1</span><a class='button plus'></a></div></li>"
+	+			"<li><span class='text'>유/소아</span><div class='children count'><a class='button minus'></a><span class='number'>0</span><a class='button plus'></a></div></li>"
+	+		"</ul>"
+	+	"</div>"
+	+	"<div class='traveler_grade'>"
+	+		"<ul>"
+	+			"<li class='title'><span class='text'>등급</span></li>"
+	+			"<li class='grade'><span id='economy'>이코노미</span></li>"
+	+			"<li class='grade'><span id='bizness'>비즈니스</span></li>"								
+	+		"</ul>"
+	+	"</div>"
+	
+	return tag;
+	})
+	
 	//---------------------------
 	// 다른 모달 활성화시 기존 활성화 모달은 비활성화 이벤트
 	// datadropper은 자기 스크립트에 설정되어있음
@@ -18,7 +47,7 @@ $(document).ready(function (){
 			return {
 				adultCount : 1, 
 				childrenCount : 0, 
-				grade : 1
+				grade : '이코노미'
 			}
 		}
 		
@@ -40,6 +69,8 @@ $(document).ready(function (){
 	$(".traveler_grade .grade").click(function(){		
 		$(this).parent("ul").find("span").css("border-color","#bcbcbc");
 		$(this).find("span").css("border-color","#ff0000");
+		travelerInfo.grade = $(this).find("span").text();
+		setTravelerInfo();
 	})
 	
 	//---------------------------
@@ -102,7 +133,6 @@ $(document).ready(function (){
 	//---------------------------
 	$(".input_traveler input").click(function(){		
 		$(this).parent("div").find(".traveler_list").show();	
-		
 	})
 	
 	//---------------------------

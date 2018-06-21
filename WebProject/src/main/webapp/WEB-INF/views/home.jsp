@@ -1,5 +1,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html lang="ko">
@@ -40,7 +41,12 @@
 			<div class="search_context" id="search_city">
 				<div class="input_city departure">
 					<img alt="departure_city_logo" src="<c:url value="/resources/img/start_city_logo.png"/> " style="width: auto;height: 24px;">
-					<input class="city_loc" type="text" placeholder="국가, 도시" name="departure_city_loc" >					
+					<input class="city_loc" type="text" placeholder="국가, 도시" name="departure_city_loc" >
+					<div class="city_loc_list">
+						<ul>
+							
+						</ul>				
+					</div>					
 				</div>
 				<div class="input_city destination">
 					<img alt="destination_city_logo" src="<c:url value="/resources/img/end_city_logo.png"/> " style="width: auto;height: 24px;">
@@ -58,22 +64,9 @@
 				</div>
 				<div class="input_traveler">
 					<img alt="input_traveler_logo" src="<c:url value="/resources/img/input_traveler_logo.png"/> " style="width: 30px;height: 24px;">
-					<input type="text" readonly value="성인 : 1, 유/소아 : 0">
-					<div class="traveler_list hide" style="">
-						<div class="traveler_person"> 
-							<ul>
-								<li class="title"><span class="text">인원</span></li>
-								<li><span class="text">성인</span><div class="adult count"><a class="button minus"></a><span class="number">1</span><a class="button plus"></a></div></li>
-								<li><span class="text">유/소아</span><div class="children count"><a class="button minus"></a><span class="number">0</span><a class="button plus"></a></div></li>
-							</ul>
-						</div>
-						<div class="traveler_grade">
-							<ul>
-								<li class="title"><span class="text">등급</span></li>
-								<li class="grade"><span id="economy">이코노미</span></li>
-								<li class="grade"><span id="bizness">비즈니스</span></li>								
-							</ul>
-						</div>
+					<input type="text" readonly value="성인 : 1, 유/소아 : 0, 등급 : 이코노미">
+ 					<div class="traveler_list" style="">
+					<!-- 인원수, 등급 등록 -->
 					</div>
 				</div>
 			</div>				
@@ -81,7 +74,10 @@
 		<div class="search_context" id="search_multi_info">
 			<div class="input_traveler">
 					<img alt="input_traveler_logo" src="<c:url value="/resources/img/input_traveler_logo.png"/> " style="width: 30px;height: 24px;">
-					<input type="text">
+					<input type="text" readonly value="성인 : 1, 유/소아 : 0, 등급 : 이코노미">
+ 					<div class="traveler_list hide" style="">
+					<!-- 인원수, 등급 등록 -->
+					</div>
 			</div>
 			<div class="search_context" id="search_city">				
 				<div class="input_city departure">
@@ -111,10 +107,7 @@
 					<input type="text">
 				</div>
 			</div>			
-		</div>
-		<div class="" id="">
-		
-		</div>
+		</div>		
 	</div>	
 </div>
 </body>

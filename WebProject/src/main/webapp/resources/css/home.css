@@ -51,26 +51,9 @@ li{
 	position: relative;	
 }
 
-.traveler_list{
-	position:absolute;
-	width:400px;
-	margin-left:35px;	
-	border: 1px solid #bcbcbc;
-	display:none;
-}
-.traveler_list .traveler_person{
-	float:left;
-	width:249px;
-	border-right: 1px solid #bcbcbc;	
-}
-
 .traveler_person ul .number{
 	margin-left:10px;
 	margin-right:10px;
-}
-
-.traveler_list .traveler_person ul .title{
-	height:20px;
 }
 
 .traveler_person ul li{
@@ -80,6 +63,24 @@ li{
 .traveler_person ul .text{
 	float:left;	
 	width:100px;	
+}
+
+.traveler_list{
+	position:absolute;
+	width:400px;
+	margin-left:35px;	
+	border: 1px solid #bcbcbc;
+	display:none;
+	background-color:#ffffff;
+}
+.traveler_list .traveler_person{
+	float:left;
+	width:249px;
+	border-right: 1px solid #bcbcbc;	
+}
+
+.traveler_list .traveler_person ul .title{
+	height:20px;
 }
 
 .traveler_list .traveler_grade{
@@ -118,6 +119,16 @@ li{
 	background:url(../img/plus.png);	
 	background-size: 16px 16px;
 	background-repeat:no-repeat;	
+}
+
+.city_loc_list{
+	display:none;
+	position:absolute;
+	width:400px;	
+	border: 1px solid #bcbcbc;
+	margin-left:36px;	
+	overflow-y: scroll; 
+	height:300px;	
 }
 
 .center{width:50%;	margin:auto;}
