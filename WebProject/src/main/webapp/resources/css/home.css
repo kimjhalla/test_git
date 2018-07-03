@@ -126,9 +126,10 @@ li{
 	position:absolute;
 	width:400px;	
 	border: 1px solid #bcbcbc;
-	margin-left:36px;	
+	margin-left:35px;	
 	overflow-y: scroll; 
 	height:300px;	
+	background-color:rgba(0, 225, 255, 0.5);
 }
 
 .center{width:50%;	margin:auto;}
@@ -163,4 +164,16 @@ li{
 
 #search_multi_info{
 	display:none;
+}
+
+#city_loc_ul{
+	height:100%;
+	margin:0;
+	padding:0;
+}
+
+#city_loc_ul li{
+	height:10%;
+	width:100%;
+	margin:0;	
 }

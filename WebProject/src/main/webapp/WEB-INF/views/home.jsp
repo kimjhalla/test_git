@@ -12,7 +12,7 @@
 	<!-- DataDropper -->
 	<script type="text/javascript" src="<c:url value="/resources/js/datedropper.js/"/>"></script>
 	<link href="<c:url value="/resources/css/datedropper.css"/>" rel="stylesheet" ></link>	
-	
+	<!-- Home Page Icon -->
 	<link rel="shortcut icon" type="image/x-icon" href="http://www.example.com/favicon.ico" />	
 	<title></title>
 </head>
@@ -42,15 +42,20 @@
 				<div class="input_city departure">
 					<img alt="departure_city_logo" src="<c:url value="/resources/img/start_city_logo.png"/> " style="width: auto;height: 24px;">
 					<input class="city_loc" type="text" placeholder="국가, 도시" name="departure_city_loc" >
-					<div class="city_loc_list">
-						<ul>
-							
+					<div class="city_loc_list modal">
+						<ul id="city_loc_ul">
+							<!-- 국가, 도시 리스트 -->							
 						</ul>				
 					</div>					
 				</div>
 				<div class="input_city destination">
 					<img alt="destination_city_logo" src="<c:url value="/resources/img/end_city_logo.png"/> " style="width: auto;height: 24px;">
 					<input class="city_loc" type="text" placeholder="국가, 도시" name="destination_city_loc" >
+					<div class="city_loc_list modal">
+						<ul id="city_loc_ul">
+							<!-- 국가, 도시 리스트 -->							
+						</ul>				
+					</div>		
 				</div>
 			</div>
 			<div class="search_context" id="search_date">
@@ -64,8 +69,8 @@
 				</div>
 				<div class="input_traveler">
 					<img alt="input_traveler_logo" src="<c:url value="/resources/img/input_traveler_logo.png"/> " style="width: 30px;height: 24px;">
-					<input type="text" readonly value="성인 : 1, 유/소아 : 0, 등급 : 이코노미">
- 					<div class="traveler_list" style="">
+					<input type="text" readonly value="성인1명,유/소아0명,등급:이코노미">
+ 					<div class="traveler_list modal" style="">
 					<!-- 인원수, 등급 등록 -->
 					</div>
 				</div>
@@ -74,19 +79,29 @@
 		<div class="search_context" id="search_multi_info">
 			<div class="input_traveler">
 					<img alt="input_traveler_logo" src="<c:url value="/resources/img/input_traveler_logo.png"/> " style="width: 30px;height: 24px;">
-					<input type="text" readonly value="성인 : 1, 유/소아 : 0, 등급 : 이코노미">
- 					<div class="traveler_list hide" style="">
+					<input type="text" readonly value="성인1명,유/소아0명, 등급:이코노미">
+ 					<div class="traveler_list modal" style="">
 					<!-- 인원수, 등급 등록 -->
 					</div>
 			</div>
 			<div class="search_context" id="search_city">				
 				<div class="input_city departure">
 					<img alt="departure_city_logo" src="<c:url value="/resources/img/start_city_logo.png"/> " style="width: auto;height: 24px;">
-					<input class="city_loc" type="text" placeholder="국가, 도시" name="departure_city_loc" >					
+					<input class="city_loc" type="text" placeholder="국가, 도시" name="departure_city_loc" >	
+					<div class="city_loc_list modal">
+						<ul id="city_loc_ul">
+							<!-- 국가, 도시 리스트 -->							
+						</ul>				
+					</div>					
 				</div>
 				<div class="input_city destination">
 					<img alt="destination_city_logo" src="<c:url value="/resources/img/end_city_logo.png"/> " style="width: auto;height: 24px;">
 					<input class="city_loc" type="text" placeholder="국가, 도시" name="destination_city_loc" >
+					<div class="city_loc_list modal">
+						<ul id="city_loc_ul">
+							<!-- 국가, 도시 리스트 -->							
+						</ul>				
+					</div>	
 				</div>
 				<div class="input_cal start">
 					<img alt="input_cal_logo" src="<c:url value="/resources/img/input_cal_logo.png"/> " style="width: 30px;height: 24px;">
@@ -96,11 +111,21 @@
 			<div class="search_context" id="search_city">				
 				<div class="input_city departure">
 					<img alt="departure_city_logo" src="<c:url value="/resources/img/start_city_logo.png"/> " style="width: auto;height: 24px;">
-					<input class="city_loc" type="text" placeholder="국가, 도시" name="departure_city_loc" >					
+					<input class="city_loc" type="text" placeholder="국가, 도시" name="departure_city_loc" >		
+					<div class="city_loc_list modal">
+						<ul id="city_loc_ul">
+							<!-- 국가, 도시 리스트 -->							
+						</ul>				
+					</div>				
 				</div>
 				<div class="input_city destination">
 					<img alt="destination_city_logo" src="<c:url value="/resources/img/end_city_logo.png"/> " style="width: auto;height: 24px;">
 					<input class="city_loc" type="text" placeholder="국가, 도시" name="destination_city_loc" >
+					<div class="city_loc_list modal">
+						<ul id="city_loc_ul">
+							<!-- 국가, 도시 리스트 -->							
+						</ul>				
+					</div>	
 				</div>
 				<div class="input_cal start">
 					<img alt="input_cal_logo" src="<c:url value="/resources/img/input_cal_logo.png"/> " style="width: 30px;height: 24px;">

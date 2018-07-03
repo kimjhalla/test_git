@@ -1,3 +1,5 @@
+var cityList= new Array();
+
 $(document).ready(function (){
 	
 	$(".city_loc_list").click(function(){
@@ -5,9 +7,91 @@ $(document).ready(function (){
 		return tag;
 	})
 	
+	//---------------------------
+	// 도시 Input 자판 클릭 이벤트
+	//---------------------------
+	$(".city_loc").on('keyup click',function(){		
+		var tag = "";
+		var searchText = $(this).val();
+		if($(this).val().length > 0){	
+			
+			// 입력 키를 조회 조건으로 검색 만듬
+			$(this).parent().find("#city_loc_ul").html(function(){				
+				var count = 0;
+				
+				var citySubList = cityList.filter(function(item){
+					var k_name = item.KOREAN_NAME;
+					var e_name = item.ENGLISH_NAME;
+					
+					return e_name.toLowerCase().match(searchText.toLowerCase());
+				});
+				for(var index in citySubList){		
+					if(count > 10)
+						break;
+					
+					tag += "<li class:'city_loc_data'; style='cursor:pointer'; data-eng-name='"+citySubList[index].ENGLISH_NAME+"' " +
+							"data-kor-name='" +citySubList[index].KOREAN_NAME+"' " +
+							"data-iata-code='" +citySubList[index].IATA_CODE+"' " +
+							"data-icao-code='" +citySubList[index].ICAO_CODE+"' " +							
+							">"+citySubList[index].KOREAN_NAME+"</li>";
+					
+					count++;				
+				}				
+				return tag;
+			});
+			
+			$(this).parent().find(".city_loc_list").show();
+			$(this).parent().find(".city_loc_list").find("li").css("border","1px solid #bcbcbc");			
+			$(this).parent().find(".city_loc_list").find("li").on("click",function(){
+				$(this).parent().parent().parent().find(".city_loc").val($(this).data("korName"));	
+				$(this).parent().parent().parent().find(".modal").hide();
+			});
+		} 
+		else{
+			$("#city_loc_ul").html("");
+			$(".city_loc_list").hide();
+		}
+	})
+	
+	function searchLangKo(searchText){
+		var rCho = ["ㄱ", "ㄲ", "ㄴ", "ㄷ", "ㄸ", "ㄹ", "ㅁ", "ㅂ", "ㅃ", "ㅅ", "ㅆ", "ㅇ", "ㅈ", "ㅉ", "ㅊ", "ㅋ", "ㅌ", "ㅍ", "ㅎ"];
+		var rJung = ["ㅏ", "ㅐ", "ㅑ", "ㅒ", "ㅓ", "ㅔ", "ㅕ", "ㅖ", "ㅗ", "ㅘ", "ㅙ", "ㅚ", "ㅛ", "ㅜ", "ㅝ", "ㅞ", "ㅟ", "ㅠ", "ㅡ", "ㅢ", "ㅣ"];
+		var rJong = ["", "ㄱ", "ㄲ", "ㄳ", "ㄴ", "ㄵ", "ㄶ", "ㄷ", "ㄹ", "ㄺ", "ㄻ", "ㄼ", "ㄽ", "ㄾ", "ㄿ", "ㅀ", "ㅁ", "ㅂ", "ㅄ", "ㅅ", "ㅆ", "ㅇ", "ㅈ", "ㅊ", "ㅋ", "ㅌ", "ㅍ", "ㅎ"];
+		 
+		var cho, jung, jong;		
+		var nTmp=searchText.charCodeAt(0) - 0xAC00;
+		jong=nTmp % 28; // 초성
+		jung=( (nTmp-jong)/28 ) % 21; // 중성
+		cho=( ( (nTmp-jong)/28 ) - jung ) / 21; // 종성
+		 
+		console.log(
+		"초성:"+rCho[cho]+"\n"
+		+"중성:"+rJung[jung]+"\n"
+		+"종성:"+rJong[jong]
+		);
+	}
 	
 	//---------------------------
-	// 승객 수, 등급 입력 화면 Init
+	// 도시 정보 init
+	//---------------------------
+	$.ajax({
+		url:'/project/resources/csv/airport_code.csv',
+		dateType:'text',		
+	}).done(function(data){
+		
+		var list = data.split("\n");		
+		var header = list[0].split(",");		
+		for(var i = 1;i < list.length;i++){
+			var tmp = {};
+			for(var j = 0;j < header.length ; j++){				
+				tmp[header[j].replace("\r","")] = list[i].split(",")[j];				
+			}
+			cityList.push(tmp);
+		}
+	});
+	
+	//---------------------------
+	// 승객 수, 등급 입력 화면 init
 	//---------------------------
 	$(".traveler_list").html(function(){
 		var tag = 
@@ -34,7 +118,7 @@ $(document).ready(function (){
 	// datadropper은 자기 스크립트에 설정되어있음
 	//---------------------------
 	$(this).click(function(e) {
-		var traveler_list = $(".traveler_list");		
+		var traveler_list = $(".modal");		
 		if(traveler_list.parent("div").has(e.target).length === 0 && traveler_list.has(e.target).length === 0) {
 			traveler_list.hide();				
 		}
@@ -124,7 +208,7 @@ $(document).ready(function (){
 	// 승객 정보 input 글자 설정
 	//---------------------------	
 	function setTravelerInfo(){
-		var str = '성인 : '+travelerInfo.adultCount+' , 유/소아 : '+travelerInfo.childrenCount+' , 등급 : '+travelerInfo.grade;
+		var str = '성인'+travelerInfo.adultCount+'명,유/소아'+travelerInfo.childrenCount+'명,등급:'+travelerInfo.grade;
 		$(".input_traveler").find("input").val(str);
 	}
 	
