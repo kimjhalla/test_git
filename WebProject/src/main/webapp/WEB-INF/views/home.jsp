@@ -7,7 +7,8 @@
 <head>
 	<fmt:formatDate var="version" value="${today}" pattern="yyyyMMDDHHmmss"/>
 	<script type="text/javascript" src="<c:url value="/resources/js/jquery-3.3.1.js/"/>"></script>
-	<script type="text/javascript" src="<c:url value="/resources/js/home.js/"/>?version=${version}"></script>	
+	<script type="text/javascript" src="<c:url value="/resources/js/home.js/"/>?version=${version}"></script>
+	<script type="text/javascript" src="<c:url value="/resources/js/function.js/"/>?version=${version}"></script>		
 	<link href="<c:url value="/resources/css/home.css"/>" rel="stylesheet" ></link>	
 	<!-- DataDropper -->
 	<script type="text/javascript" src="<c:url value="/resources/js/datedropper.js/"/>"></script>
@@ -25,18 +26,26 @@
 		<div id="div_login">
 			<input type="text" name="userId" id="userId" value=""><br/>
 			<input type="password" name="userPw" id="userPw" value=""><br/>
-			<input type="button" id="loginBtn" value="로그인" onclick="login();">	
+			<input type="button" id="loginBtn" value="로그인" onclick="login()">	
 			<a href="http://localhost:8080/project/join">가입</a>
 		</div>
 	</div>
 	<div id="div_search">
-		<div class="search_context" id="search_type">
-			<ul class="search_type">
-				<li><a rel="round" class="active" style="color:red" >왕복</a></li>
-				<li><a rel="multi">다구간</a></li>
-				<li><a rel="oneway">편도</a></li>
-			</ul>		
+		<div class="search_context">
+			<div class="trip_type">
+				<ul class="search_type">
+					<li><a rel="round" class="active" style="color:red" >왕복</a></li>
+					<li><a rel="multi">다구간</a></li>
+					<li><a rel="oneway">편도</a></li>				
+				</ul>
+			</div>
+			<div class="search_button">
+				<ul>
+					<li><input type="button" id="searchButton" value="검색" onclick="search()"></li>
+				</ul>
+			</div>
 		</div>
+		
 		<div class="search_context" id="search_info" style="display:block;">
 			<div class="search_context" id="search_city">
 				<div class="input_city departure">
@@ -78,11 +87,11 @@
 		</div>
 		<div class="search_context" id="search_multi_info">
 			<div class="input_traveler">
-					<img alt="input_traveler_logo" src="<c:url value="/resources/img/input_traveler_logo.png"/> " style="width: 30px;height: 24px;">
-					<input type="text" readonly value="성인1명,유/소아0명, 등급:이코노미">
- 					<div class="traveler_list modal" style="">
-					<!-- 인원수, 등급 등록 -->
-					</div>
+				<img alt="input_traveler_logo" src="<c:url value="/resources/img/input_traveler_logo.png"/> " style="width: 30px;height: 24px;">
+				<input type="text" readonly value="성인1명,유/소아0명, 등급:이코노미">
+				<div class="traveler_list modal" style="">
+				<!-- 인원수, 등급 등록 -->
+				</div>
 			</div>
 			<div class="search_context" id="search_city">				
 				<div class="input_city departure">

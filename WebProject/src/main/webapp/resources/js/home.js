@@ -2,18 +2,15 @@ var cityList= new Array();
 
 $(document).ready(function (){
 	
-	$(".city_loc_list").click(function(){
-		var tag = "";
-		return tag;
-	})
-	
 	//---------------------------
 	// 도시 Input 자판 클릭 이벤트
 	//---------------------------
-	$(".city_loc").on('keyup click',function(){		
+	$(".city_loc").on('keyup click',function(){
 		var tag = "";
 		var searchText = $(this).val();
 		if($(this).val().length > 0){	
+			// 기존 활성화 모달 비활성화
+			$(".modal").hide();
 			
 			// 입력 키를 조회 조건으로 검색 만듬
 			$(this).parent().find("#city_loc_ul").html(function(){				
@@ -23,7 +20,12 @@ $(document).ready(function (){
 					var k_name = item.KOREAN_NAME;
 					var e_name = item.ENGLISH_NAME;
 					
-					return e_name.toLowerCase().match(searchText.toLowerCase());
+					e_name = e_name.replace("International","");
+					e_name = e_name.replace("Airport","");
+					
+					// 정규표현식 검색
+					var reg = RegExp(searchText.toLowerCase(),"gi");
+					return reg.test(e_name.toLowerCase());
 				});
 				for(var index in citySubList){		
 					if(count > 10)
@@ -32,7 +34,7 @@ $(document).ready(function (){
 					tag += "<li class:'city_loc_data'; style='cursor:pointer'; data-eng-name='"+citySubList[index].ENGLISH_NAME+"' " +
 							"data-kor-name='" +citySubList[index].KOREAN_NAME+"' " +
 							"data-iata-code='" +citySubList[index].IATA_CODE+"' " +
-							"data-icao-code='" +citySubList[index].ICAO_CODE+"' " +							
+							"data-icao-code='" +citySubList[index].ICAO_CODE+"' " +
 							">"+citySubList[index].KOREAN_NAME+"</li>";
 					
 					count++;				
@@ -43,7 +45,10 @@ $(document).ready(function (){
 			$(this).parent().find(".city_loc_list").show();
 			$(this).parent().find(".city_loc_list").find("li").css("border","1px solid #bcbcbc");			
 			$(this).parent().find(".city_loc_list").find("li").on("click",function(){
-				$(this).parent().parent().parent().find(".city_loc").val($(this).data("korName"));	
+				
+				// 도시 데이터 클릭 이벤트
+				$(this).parent().parent().parent().find(".city_loc").val($(this).data("korName"));
+				$(this).parent().parent().parent().find(".city_loc").data("iataCode",$(this).data("iataCode"));				
 				$(this).parent().parent().parent().find(".modal").hide();
 			});
 		} 
@@ -118,7 +123,8 @@ $(document).ready(function (){
 	// datadropper은 자기 스크립트에 설정되어있음
 	//---------------------------
 	$(this).click(function(e) {
-		var traveler_list = $(".modal");		
+		var traveler_list = $(".modal");	
+		
 		if(traveler_list.parent("div").has(e.target).length === 0 && traveler_list.has(e.target).length === 0) {
 			traveler_list.hide();				
 		}
@@ -128,7 +134,7 @@ $(document).ready(function (){
 		var instance;
 
 		function initiate(){
-			return {
+			return {		
 				adultCount : 1, 
 				childrenCount : 0, 
 				grade : '이코노미'
@@ -275,29 +281,27 @@ $(document).ready(function (){
 	}
 	
 	//---------------------------
-	//ajax 를 통한 로그인 프로세스 진행
-	//---------------------------	
+	// ajax 를 통한 로그인 프로세스 진행
+	//---------------------------
 	function login() {
-		jQuery.ajax({
-			type : "POST",
-			url : "login.do",
-			data : {
-				userId : $("#userId").val(),
-				userPw : $("#userPw").val()
-			},
-			datatype : "JSON",
-			contenttype : "application/json;",
-			success : function(obj) {
-				callbacklogin(obj);
-			},
-			error : function(xhr, status, error) {
-				console.log(xhr);
-			}
-		})
+			
+		AJAX('login.do',{
+			userId : $("#userId").val(),
+			userPw : $("#userPw").val()
+		},callbacklogin)
 	}
+
 	//---------------------------
-	// ajax 실행 결과 후처리
+	//가입 버튼 클릭시 처리
 	//---------------------------
+	function join(){
+		
+	}
+
+
+	// ---------------------------
+	// 로그인 실행 결과 후처리
+	// ---------------------------
 	function callbacklogin(obj) {
 		if (obj.resultCode != null || length(obj.resultCode) > 0) {
 			alert(obj.resultCode);
@@ -306,12 +310,5 @@ $(document).ready(function (){
 			// 로그인 화면으로 전환
 		}
 	}
-	
-	//---------------------------
-	// 가입 버튼 클릭시 처리
-	//---------------------------
-	function join(){
-		
-	}
-
 })
+	

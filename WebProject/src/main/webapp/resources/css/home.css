@@ -25,6 +25,16 @@ li{
 }
 
 /* 클래스 CSS 정의 */
+.trip_type{
+	width:70%;
+	float:left;
+}
+
+.search_button{
+	width:30%;
+	float:right;
+}
+
 .input_city{
 	width:16pc;
 	float:left;
