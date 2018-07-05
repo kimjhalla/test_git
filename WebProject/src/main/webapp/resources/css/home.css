@@ -143,10 +143,12 @@ li{
 }
 
 .center{width:50%;	margin:auto;}
+
 .search_type li{float:left;margin-right:50px;content:"";border-color:red;cursor:pointer;}
 
-/* ID CSS 정의 */
+.modal{z-index:1;}
 
+/* ID CSS 정의 */
 #div_root{
 	margin:auto;	
 }

@@ -7,6 +7,7 @@
 <head>
 	<fmt:formatDate var="version" value="${today}" pattern="yyyyMMDDHHmmss"/>
 	<script type="text/javascript" src="<c:url value="/resources/js/jquery-3.3.1.js/"/>"></script>
+	<script type="text/javascript" src="<c:url value="/resources/js/value.js/"/>?version=${version}"></script>
 	<script type="text/javascript" src="<c:url value="/resources/js/home.js/"/>?version=${version}"></script>
 	<script type="text/javascript" src="<c:url value="/resources/js/function.js/"/>?version=${version}"></script>		
 	<link href="<c:url value="/resources/css/home.css"/>" rel="stylesheet" ></link>	
@@ -31,6 +32,7 @@
 		</div>
 	</div>
 	<div id="div_search">
+	
 		<div class="search_context">
 			<div class="trip_type">
 				<ul class="search_type">
@@ -47,7 +49,7 @@
 		</div>
 		
 		<div class="search_context" id="search_info" style="display:block;">
-			<div class="search_context" id="search_city">
+			<div class="search_context search_city">
 				<div class="input_city departure">
 					<img alt="departure_city_logo" src="<c:url value="/resources/img/start_city_logo.png"/> " style="width: auto;height: 24px;">
 					<input class="city_loc" type="text" placeholder="국가, 도시" name="departure_city_loc" >
@@ -93,7 +95,7 @@
 				<!-- 인원수, 등급 등록 -->
 				</div>
 			</div>
-			<div class="search_context" id="search_city">				
+			<div class="search_context search_city">				
 				<div class="input_city departure">
 					<img alt="departure_city_logo" src="<c:url value="/resources/img/start_city_logo.png"/> " style="width: auto;height: 24px;">
 					<input class="city_loc" type="text" placeholder="국가, 도시" name="departure_city_loc" >	
@@ -117,7 +119,79 @@
 					<input type="text">
 				</div>
 			</div>
-			<div class="search_context" id="search_city">				
+			<div class="search_context search_city">				
+				<div class="input_city departure">
+					<img alt="departure_city_logo" src="<c:url value="/resources/img/start_city_logo.png"/> " style="width: auto;height: 24px;">
+					<input class="city_loc" type="text" placeholder="국가, 도시" name="departure_city_loc" >		
+					<div class="city_loc_list modal">
+						<ul id="city_loc_ul">
+							<!-- 국가, 도시 리스트 -->							
+						</ul>				
+					</div>				
+				</div>
+				<div class="input_city destination">
+					<img alt="destination_city_logo" src="<c:url value="/resources/img/end_city_logo.png"/> " style="width: auto;height: 24px;">
+					<input class="city_loc" type="text" placeholder="국가, 도시" name="destination_city_loc" >
+					<div class="city_loc_list modal">
+						<ul id="city_loc_ul">
+							<!-- 국가, 도시 리스트 -->							
+						</ul>				
+					</div>	
+				</div>
+				<div class="input_cal start">
+					<img alt="input_cal_logo" src="<c:url value="/resources/img/input_cal_logo.png"/> " style="width: 30px;height: 24px;">
+					<input type="text">
+				</div>
+			</div>
+			<div class="search_context search_city">				
+				<div class="input_city departure">
+					<img alt="departure_city_logo" src="<c:url value="/resources/img/start_city_logo.png"/> " style="width: auto;height: 24px;">
+					<input class="city_loc" type="text" placeholder="국가, 도시" name="departure_city_loc" >		
+					<div class="city_loc_list modal">
+						<ul id="city_loc_ul">
+							<!-- 국가, 도시 리스트 -->							
+						</ul>				
+					</div>				
+				</div>
+				<div class="input_city destination">
+					<img alt="destination_city_logo" src="<c:url value="/resources/img/end_city_logo.png"/> " style="width: auto;height: 24px;">
+					<input class="city_loc" type="text" placeholder="국가, 도시" name="destination_city_loc" >
+					<div class="city_loc_list modal">
+						<ul id="city_loc_ul">
+							<!-- 국가, 도시 리스트 -->							
+						</ul>				
+					</div>	
+				</div>
+				<div class="input_cal start">
+					<img alt="input_cal_logo" src="<c:url value="/resources/img/input_cal_logo.png"/> " style="width: 30px;height: 24px;">
+					<input type="text">
+				</div>
+			</div>
+			<div class="search_context search_city">				
+				<div class="input_city departure">
+					<img alt="departure_city_logo" src="<c:url value="/resources/img/start_city_logo.png"/> " style="width: auto;height: 24px;">
+					<input class="city_loc" type="text" placeholder="국가, 도시" name="departure_city_loc" >		
+					<div class="city_loc_list modal">
+						<ul id="city_loc_ul">
+							<!-- 국가, 도시 리스트 -->							
+						</ul>				
+					</div>				
+				</div>
+				<div class="input_city destination">
+					<img alt="destination_city_logo" src="<c:url value="/resources/img/end_city_logo.png"/> " style="width: auto;height: 24px;">
+					<input class="city_loc" type="text" placeholder="국가, 도시" name="destination_city_loc" >
+					<div class="city_loc_list modal">
+						<ul id="city_loc_ul">
+							<!-- 국가, 도시 리스트 -->							
+						</ul>				
+					</div>	
+				</div>
+				<div class="input_cal start">
+					<img alt="input_cal_logo" src="<c:url value="/resources/img/input_cal_logo.png"/> " style="width: 30px;height: 24px;">
+					<input type="text">
+				</div>
+			</div>
+			<div class="search_context search_city">				
 				<div class="input_city departure">
 					<img alt="departure_city_logo" src="<c:url value="/resources/img/start_city_logo.png"/> " style="width: auto;height: 24px;">
 					<input class="city_loc" type="text" placeholder="국가, 도시" name="departure_city_loc" >		

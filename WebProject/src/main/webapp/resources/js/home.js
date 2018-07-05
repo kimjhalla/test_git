@@ -110,8 +110,8 @@ $(document).ready(function (){
 	+	"<div class='traveler_grade'>"
 	+		"<ul>"
 	+			"<li class='title'><span class='text'>등급</span></li>"
-	+			"<li class='grade'><span id='economy'>이코노미</span></li>"
-	+			"<li class='grade'><span id='bizness'>비즈니스</span></li>"								
+	+			"<li class='grade'><span id='economy' data-grade-code=1>이코노미</span></li>"
+	+			"<li class='grade'><span id='bizness' data-grade-code=2>비즈니스</span></li>"								
 	+		"</ul>"
 	+	"</div>"
 	
@@ -130,29 +130,6 @@ $(document).ready(function (){
 		}
 	})
 	
-	var TravelerInfo = (function(){
-		var instance;
-
-		function initiate(){
-			return {		
-				adultCount : 1, 
-				childrenCount : 0, 
-				grade : '이코노미'
-			}
-		}
-		
-		return{
-			getInstance: function(){
-				if(!instance){
-					instance = initiate();
-				}
-				return instance;
-			}
-		}
-	})();
-	
-	var travelerInfo = TravelerInfo.getInstance();
-	
 	//---------------------------
 	// 승객 등급 변경 이벤트 
 	//---------------------------
@@ -160,6 +137,7 @@ $(document).ready(function (){
 		$(this).parent("ul").find("span").css("border-color","#bcbcbc");
 		$(this).find("span").css("border-color","#ff0000");
 		travelerInfo.grade = $(this).find("span").text();
+		travelerInfo.gradeCode = $(this).find("span").data('gradeCode');
 		setTravelerInfo();
 	})
 	
