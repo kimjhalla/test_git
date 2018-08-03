@@ -61,9 +61,9 @@ function AJAX(url,param,callback) {
 	jQuery.ajax({
 		type : "POST",
 		url : url,
-		data : param,
-		datatype : "JSON",
-		contenttype : "application/json;",
+		data : JSON.stringify(param),
+		dataType : "JSON",
+		contentType : "application/json;charset=utf-8",
 		success : function(obj) {
 			callback(obj);
 		},

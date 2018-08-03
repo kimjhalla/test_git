@@ -1,10 +1,11 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8" %>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 	<fmt:formatDate var="version" value="${today}" pattern="yyyyMMDDHHmmss"/>
 	<script type="text/javascript" src="<c:url value="/resources/js/jquery-3.3.1.js/"/>"></script>
 	<script type="text/javascript" src="<c:url value="/resources/js/value.js/"/>?version=${version}"></script>
@@ -27,12 +28,11 @@
 		<div id="div_login">
 			<input type="text" name="userId" id="userId" value=""><br/>
 			<input type="password" name="userPw" id="userPw" value=""><br/>
-			<input type="button" id="loginBtn" value="로그인" onclick="login()">	
+			<input type="button" id="loginBtn" value="로그인">	
 			<a href="http://localhost:8080/project/join">가입</a>
 		</div>
 	</div>
-	<div id="div_search">
-	
+	<div id="div_search">	
 		<div class="search_context">
 			<div class="trip_type">
 				<ul class="search_type">
@@ -43,7 +43,7 @@
 			</div>
 			<div class="search_button">
 				<ul>
-					<li><input type="button" id="searchButton" value="검색" onclick="search()"></li>
+					<li><input type="button" id="searchButton" value="검색" ></li>
 				</ul>
 			</div>
 		</div>
@@ -215,8 +215,15 @@
 					<input type="text">
 				</div>
 			</div>			
-		</div>		
+		</div>					
 	</div>	
+	<div id="div_result">
+			<!--  검색 결과  -->
+			<div class="flight_summary_info">
+				
+			
+			</div>			
+		</div>	
 </div>
 </body>
 </html>

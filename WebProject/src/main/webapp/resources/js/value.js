@@ -1,16 +1,11 @@
-/**
- * 
- */
-
-
 var TravelerInfo = (function(){
 	var instance;
 	function initiate(){
-		return {		
+		return {
 			adultCount : 1, 
 			childrenCount : 0, 
 			grade : '이코노미',
-			gradeCode : 1
+			gradeCode : 1			
 		}
 	}
 	

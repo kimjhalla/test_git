@@ -148,6 +148,13 @@ li{
 
 .modal{z-index:1;}
 
+.flight_summary_info{
+	border: 1px solid #bcbcbc;
+	height: 50px;
+	width: 64pc;	
+	margin: -1px auto 1pc;	
+}
+
 /* ID CSS 정의 */
 #div_root{
 	margin:auto;	
@@ -169,9 +176,16 @@ li{
 
 #div_search{
 	margin: -1px auto 1pc;
-    height: 25px;
+    height: 400px;
     width: 64pc;
     position: relative;	
+}
+
+#div_result{
+    margin: -1px auto 1pc;
+    height: 500px;
+    position: relative;
+    border: 1px;
 }
 
 #search_multi_info{

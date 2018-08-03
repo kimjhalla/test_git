@@ -1,7 +1,7 @@
 var cityList= new Array();
 
 $(document).ready(function (){
-	
+	travelerInfo = TravelerInfo.getInstance()
 	//---------------------------
 	// 도시 Input 자판 클릭 이벤트
 	//---------------------------
@@ -46,7 +46,7 @@ $(document).ready(function (){
 			$(this).parent().find(".city_loc_list").find("li").css("border","1px solid #bcbcbc");			
 			$(this).parent().find(".city_loc_list").find("li").on("click",function(){
 				
-				// 도시 데이터 클릭 이벤트
+				// 도시 데이터 클릭 이벤트				
 				$(this).parent().parent().parent().find(".city_loc").val($(this).data("korName"));
 				$(this).parent().parent().parent().find(".city_loc").data("iataCode",$(this).data("iataCode"));				
 				$(this).parent().parent().parent().find(".modal").hide();
@@ -261,13 +261,14 @@ $(document).ready(function (){
 	//---------------------------
 	// ajax 를 통한 로그인 프로세스 진행
 	//---------------------------
-	function login() {
-			
-		AJAX('login.do',{
-			userId : $("#userId").val(),
-			userPw : $("#userPw").val()
-		},callbacklogin)
-	}
+	$("#loginBtn").click(function(){
+		param = 	{
+				userId : $("#userId").val(),
+				userPw : $("#userPw").val()
+			}
+		
+		AJAX('login.do',param,callbacklogin)
+	})
 
 	//---------------------------
 	//가입 버튼 클릭시 처리
@@ -281,11 +282,87 @@ $(document).ready(function (){
 	// 로그인 실행 결과 후처리
 	// ---------------------------
 	function callbacklogin(obj) {
-		if (obj.resultCode != null || length(obj.resultCode) > 0) {
+		if (obj.resultCode != null || obj.resultCode.length > 0) {
 			alert(obj.resultCode);
 		} else {
 			alert('성공');
 			// 로그인 화면으로 전환
+		}
+	}
+	
+	//---------------------------
+	// ajax 를 통한 검색 요청 프로세스
+	//---------------------------
+	$("#searchButton").click(function(){
+		param = {
+				adultCount : "",
+				childrenCount : "",
+				babyCount : "",
+				flightType : $(".search_type").find("a[class='active']").attr('rel'),	
+				gradeCode : "",
+				flightParamList : new Array()
+		}
+		flightParam = {					
+				depatureCity : "",
+				destinationCity : "",
+				depatureDate : "",
+				destinationDate : ""	
+			}
+		// 다구간 여부 체크 travelerInfo
+		if(param.flightType == "multi"){
+			var idx = 0;
+			$("#search_multi_info").find(".search_city").each(function(index,item){
+				var depatureCity = $(item).find(".departure").find("input").val()
+				var destinationCity = $(item).find(".destination").find("input").val()
+				var depatureDate = $(item).find(".start").find("input").val()
+				
+				if(depatureCity.length != 0 && destinationCity.length != 0 && depatureDate.length != 0){					
+					param.flightParamList.push({					
+						depatureCity : depatureCity,
+						destinationCity : destinationCity,
+						depatureDate : depatureDate,
+						destinationDate : ""	
+					})
+				}
+			})
+		}
+		else{
+			flightCity = $("#search_info").find(".search_city")
+			flightDate = $("#search_info").find("#search_date")
+			flightParam.depatureCity = flightCity.find(".departure").find("input").val()
+			flightParam.destinationCity = flightCity.find(".destination").find("input").val()
+			flightParam.depatureDate = flightDate.find(".start").find("input").val()
+			flightParam.destinationDate = flightDate.find(".end").find("input").val()
+			
+			if(flightParam.depatureCity.length == 0 || flightParam.destinationCity.length == 0 || flightParam.depatureDate.length == 0 || (flightParam.flightType == "rount" && flightParam.destinationDate.length == 0)){
+				alert('실패')
+				return;
+			}			
+			param.flightParamList.push(flightParam)
+		}
+		
+		if(param.flightParamList.size == 0){
+			alert('실패')
+			return;
+		}
+		param.adultCount = travelerInfo.adultCount;
+		param.childrenCount = travelerInfo.childrenCount;
+		param.babyCount = 0;
+		param.gradeCode = travelerInfo.gradeCode;
+		
+		console.log(param)
+		
+		AJAX('searchRequest.do',param,callbackSearchRequest)
+	})
+	
+	function callbackSearchRequest(obj){
+		if (obj.resultCode != null && String(obj.resultCode).length > 0) {
+			// 검색 요청 실패
+			alert(obj.resultCode);
+		} else {
+			// 검색 요청 성공
+			// 결과 받는 대로 처리하도록 설정
+			alert('성공');
 		}
 	}
 })
